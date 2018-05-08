@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'callback', to: 'welcome/callback', controller: 'welcome'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
