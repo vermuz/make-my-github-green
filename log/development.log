@@ -773,3 +773,179 @@ Processing by WelcomeController#callback as HTML
 Completed 200 OK in 7328ms (Views: 208.9ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5436721237706365320)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180508145740)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "github_username" character varying, "github_authentication_token" character varying, "repo_name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180508145740"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5436721237706365320)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:08:39 +0300
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/alexandersideris/Documents/GitHub/make-my-github-green/app/controllers/welcome_controller.rb:29: syntax error, unexpected ':', expecting keyword_end
+			  message: 'Your commit message',
+			          ^
+/Users/alexandersideris/Documents/GitHub/make-my-github-green/app/controllers/welcome_controller.rb:29: syntax error, unexpected ',', expecting keyword_end
+essage: 'Your commit message',
+                              ^
+/Users/alexandersideris/Documents/GitHub/make-my-github-green/app/controllers/welcome_controller.rb:30: syntax error, unexpected ',', expecting keyword_end
+ 'The contents to be updated',
+                              ^):
+  
+app/controllers/welcome_controller.rb:29: syntax error, unexpected ':', expecting keyword_end
+app/controllers/welcome_controller.rb:29: syntax error, unexpected ',', expecting keyword_end
+app/controllers/welcome_controller.rb:30: syntax error, unexpected ',', expecting keyword_end
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:08:51 +0300
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 43ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=573820641381adda015f" for 127.0.0.1 at 2018-05-08 18:08:53 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"573820641381adda015f"}
+Completed 500 Internal Server Error in 2958ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `contents' for #<WelcomeController:0x007ff22ce63978>
+Did you mean?  content_type):
+  
+app/controllers/welcome_controller.rb:25:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:09:43 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 36ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=9e7bab8e5973cb6ebd94" for 127.0.0.1 at 2018-05-08 18:09:43 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"9e7bab8e5973cb6ebd94"}
+Completed 500 Internal Server Error in 2269ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `contents' for #<WelcomeController:0x007ff1ebfde028>
+Did you mean?  content_type):
+  
+app/controllers/welcome_controller.rb:25:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:10:33 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=9ff0cd2f3d434e890b9f" for 127.0.0.1 at 2018-05-08 18:10:34 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"9ff0cd2f3d434e890b9f"}
+Completed 500 Internal Server Error in 2695ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (Wrong number of arguments (1 for 3). Expected `user, repo, path` as required arguments, but got `path`.):
+  
+app/controllers/welcome_controller.rb:27:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/callback?code=9ff0cd2f3d434e890b9f" for 127.0.0.1 at 2018-05-08 18:11:00 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"9ff0cd2f3d434e890b9f"}
+Completed 500 Internal Server Error in 1415ms (ActiveRecord: 0.0ms)
+
+
+  
+OAuth2::Error (bad_verification_code: The code passed is incorrect or expired.
+error=bad_verification_code&error_description=The+code+passed+is+incorrect+or+expired.&error_uri=https%3A%2F%2Fdeveloper.github.com%2Fapps%2Fmanaging-oauth-apps%2Ftroubleshooting-oauth-app-access-token-request-errors%2F%23bad-verification-code):
+  
+app/controllers/welcome_controller.rb:16:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:11:04 +0300
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=3faddc0750c3606a3fda" for 127.0.0.1 at 2018-05-08 18:11:05 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"3faddc0750c3606a3fda"}
+Completed 500 Internal Server Error in 2365ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (Wrong number of arguments (1 for 3). Expected `user, repo, path` as required arguments, but got `path`.):
+  
+app/controllers/welcome_controller.rb:27:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:12:02 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/alexandersideris/Documents/GitHub/make-my-github-green/app/controllers/welcome_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+ user: 'alexandersideris' repo: 'repo-name' path: 'path'
+                              ^
+/Users/alexandersideris/Documents/GitHub/make-my-github-green/app/controllers/welcome_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+ideris' repo: 'repo-name' path: 'path'
+                              ^):
+  
+app/controllers/welcome_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/controllers/welcome_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:12:32 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 42ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=a1134c5fd775adffc731" for 127.0.0.1 at 2018-05-08 18:12:33 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"a1134c5fd775adffc731"}
+Completed 500 Internal Server Error in 5119ms (ActiveRecord: 0.0ms)
+
+
+  
+Github::Error::NotFound (PUT https://api.github.com/repos/alexandersideris/repo_name/contents/path?access_token=93ac580f8d31fc0022bb2606823c82dfee99d48f: 404 - Not Found
+See: https://developer.github.com/v3/repos/contents/#update-a-file):
+  
+app/controllers/welcome_controller.rb:29:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:16:54 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 47ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=7ef228c586f5b29fb0d5" for 127.0.0.1 at 2018-05-08 18:16:55 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"7ef228c586f5b29fb0d5"}
+Completed 500 Internal Server Error in 6734ms (ActiveRecord: 0.0ms)
+
+
+  
+Github::Error::NotFound (PUT https://api.github.com/repos/alexandersideris/repo_name/contents/?access_token=a71c0a837fa400640fb438e934a8c077c68de146: 404 - Not Found
+See: https://developer.github.com/v3):
+  
+app/controllers/welcome_controller.rb:29:in `rescue in callback'
+app/controllers/welcome_controller.rb:14:in `callback'
+Started GET "/" for 127.0.0.1 at 2018-05-08 18:23:32 +0300
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Redirected to https://github.com/login/oauth/authorize?response_type=code&client_id=32f0ef2d0e2b2c581ce0&scope=repo
+Completed 302 Found in 45ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?code=53c5027fe0a56b688d55" for 127.0.0.1 at 2018-05-08 18:23:34 +0300
+Processing by WelcomeController#callback as HTML
+  Parameters: {"code"=>"53c5027fe0a56b688d55"}
+  Rendering welcome/callback.html.erb within layouts/application
+  Rendered welcome/callback.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7019ms (Views: 238.5ms | ActiveRecord: 0.0ms)
+
+

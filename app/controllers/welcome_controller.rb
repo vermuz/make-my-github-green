@@ -21,10 +21,16 @@ class WelcomeController < ApplicationController
 	  	puts e.message
 	  	if e.is_a? Github::Error::ServiceError
 	    	puts 'service error'
-	    	github.repos.contents.create 'alexandersideris', 'repo-name', 'path',
-			  path: 'hello.rb',
-			  content: "puts 'hello ruby'",
-			  message: "my commit message"
+
+	    	contents = Github::Client::Repos::Contents.new oauth_token: @access_token.token
+
+	    	file = contents.find user: 'alexandersideris', repo: 'repo-name', path: 'path'
+
+			contents.update 'alexandersideris', 'repo-name', 'path',
+			  path: '/',
+			  message: 'Your commit message',
+			  content: 'The contents to be updated',
+			  sha: file.sha
 	  	elsif e.is_a? Github::Error::ClientError
 	  		puts 'client error'
 	  	end
