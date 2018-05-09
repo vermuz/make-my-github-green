@@ -6,12 +6,11 @@ class WelcomeController < ApplicationController
   end
 
   def authorize
-  	puts Rails.env
   	if Rails.env == "development"
   		address = github.authorize_url scope: 'repo'
     	redirect_to address
-  	else
-    	address = github.authorize_url redirect_uri: 'http://www.makemygithubgreen.herokuapp.com/callback', scope: 'repo'
+  	elsif Rails.env == "production"
+    	address = github.authorize_url redirect_uri: 'https://makemygithubgreen.herokuapp.com/callback', scope: 'repo'
     	redirect_to address
   	end
   end
