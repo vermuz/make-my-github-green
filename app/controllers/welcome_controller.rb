@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
   end
 
   def authorize
-  	if Rails.env.production == true
+  	if Rails.env == "production"
   		address = github.authorize_url redirect_uri: 'http://makemygithubgreen.herokuapp.com/callback', scope: 'repo'
     	redirect_to address
   	else
