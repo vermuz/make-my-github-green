@@ -6,8 +6,13 @@ class WelcomeController < ApplicationController
   end
 
   def authorize
-    address = github.authorize_url scope: 'repo'
-    redirect_to address
+  	if Rails.env.production == true
+  		address = github.authorize_url redirect_uri: 'http://makemygithubgreen.herokuapp.com/callback', scope: 'repo'
+    	redirect_to address
+  	else
+    	address = github.authorize_url scope: 'repo'
+    	redirect_to address
+  	end
   end
 
   def callback
@@ -35,7 +40,7 @@ class WelcomeController < ApplicationController
 	  		puts 'client error'
 	  	end
 	end
-	# redirect_to "/success_page"  
+	redirect_to "/success"  
   end
 
   def commit_and_push

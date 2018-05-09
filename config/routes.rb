@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'callback', to: 'welcome/callback', controller: 'welcome'
 
+  get 'success', to: 'welcome/callback', controller: 'welcome'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
