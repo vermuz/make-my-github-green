@@ -5,11 +5,16 @@ require 'json'
 
 # This task is the daily commits for free users
 task :daily_commits => :environment do
+
+	puts 'in daily_commits'
+
   	# Get all the users
 	users = User.all
 
 	# Loop through them
 	users.each do |user|
+
+		puts 'in user '+user.github_username
 
 		# Create a random number of commits
 		possible_number_of_commits = [0,0,0,1,2,3,4,5,6,7]
@@ -29,6 +34,8 @@ task :daily_commits => :environment do
 end
 
 def new_commit(user)
+
+	puts 'in new commit'
 
 	# Get the GitHub instance
 	github = Github.new oauth_token: user.github_authentication_token
