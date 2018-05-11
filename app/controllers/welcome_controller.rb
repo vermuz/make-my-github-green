@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
   		address = github.authorize_url scope: 'repo'
     	redirect_to address
   	elsif Rails.env == "production"
-    	address = github.authorize_url redirect_uri: 'https://makemygithubgreen.herokuapp.com/callback', scope: 'repo'
+    	address = github.authorize_url redirect_uri: 'http://www.githubgardener.xyz/callback', scope: 'repo'
     	redirect_to address
   	end
   end
