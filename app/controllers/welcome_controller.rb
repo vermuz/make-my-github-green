@@ -52,8 +52,6 @@ class WelcomeController < ApplicationController
 	    	user.github_authentication_token = @access_token.token
 	    	user.save
 
-	    	new_commit(username, @access_token.token, github)
-
 	    end
 
 	# Catch error so that the page does not return a 500 error
