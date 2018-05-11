@@ -33,7 +33,6 @@ gem 'spring',        group: :development
 gem 'puma'
 
 gem "github_api"
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

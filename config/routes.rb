@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'signup', to: 'welcome/signup', controller: 'welcome'
+
   get 'callback', to: 'welcome/callback', controller: 'welcome'
 
   get 'success', to: 'welcome/callback', controller: 'welcome'
