@@ -72,36 +72,6 @@ class WelcomeController < ApplicationController
 
   private
 
-  	def new_commit(username, token, github)
-		
-		user = User.where(:github_username => username).first
-		puts user.github_username
-		puts user.repo_name
-
-  		# Get the repo we have created, hopefully. I could just access user.repo_name but he might have deleted or changed the name
-	    uri = URI('https://api.github.com/user/repos?access_token='+token)
-		response = JSON.parse(Net::HTTP.get(uri))
-		
-		response.each do |repo|
-			if repo['name'] == user.repo_name
-				
-				# Make a commit
-			    
-			    file = github.repos.contents.find user: username, repo: user.repo_name, path: 'README.md'
-				
-				github.repos.contents.update username, user.repo_name, 'README.md',
-					path: 'README.md',
-					message: 'Small change',
-					content: 'This is the GitHub Gardener project',
-					sha: file.sha
-				
-				break
-			end
-		end
-
-		
-  	end
-
   	def create_repo_and_initial_commit(username, token, github)
 
 

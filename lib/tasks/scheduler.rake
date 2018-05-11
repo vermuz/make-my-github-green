@@ -3,7 +3,30 @@ require 'uri'
 require 'rubygems'
 require 'json'
 
-# This is the daily cron task
+# This task is the daily commits for free users
+task :daily_commits => :environment do
+  	# Get all the users
+	users = User.all
+
+	# Loop through them
+	users.each do |user|
+
+		# Create a random number of commits
+		possible_number_of_commits = [0,0,0,1,2,3,4,5,6,7]
+		random_index = rand(possible_number_of_commits.length)
+
+
+		$i = 0
+		$num = possible_number_of_commits[random_index]
+
+		# Make the commits
+		while $i < $num  do
+		   new_commit(user)
+		   $i +=1
+		end
+
+	end
+end
 
 def new_commit(user)
 
@@ -30,26 +53,4 @@ def new_commit(user)
 			break
 		end
 	end
-end
-
-# Get all the users
-users = User.all
-
-# Loop through them
-users.each do |user|
-
-	# Create a random number of commits
-	possible_number_of_commits = [0,0,0,1,2,3,4,5,6,7]
-	random_index = rand(possible_number_of_commits.length)
-
-
-	$i = 0
-	$num = possible_number_of_commits[random_index]
-
-	# Make the commits
-	while $i < $num  do
-	   new_commit(user)
-	   $i +=1
-	end
-
 end
