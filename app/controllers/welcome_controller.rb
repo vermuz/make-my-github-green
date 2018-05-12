@@ -68,6 +68,10 @@ class WelcomeController < ApplicationController
   
   end
 
+  def camo
+  	
+  end
+
   private
 
   	def create_repo_and_initial_commit(username, token, github)

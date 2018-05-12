@@ -1,14 +1,14 @@
 # GitHub Gardener
 
-A simple web app that commits code to your GitHub repo in order to make your contribution history green.
+A web app / bot that commits code to your GitHub repo in order to make your contribution history green.
 
 http://www.githubgardener.xyz
 
 ## Permissions
 
-For this project to work, I needed to access the 'repo' scope. That means read and write permissions.
+For this project to work, I needed to access the 'repo' scope of the GitHub API permissions. That means read and write permissions for public repositories.
 
-I don't abuse any of these permissions, I don't even store you email. All I do is store your GitHub username because I have to.
+I don't abuse any of these permissions, I don't even store your email. All I do is store your GitHub username because I have to.
 
 ## Web flow
 
@@ -16,7 +16,7 @@ When you sign up, GitHub Gardener creates new public repo for you with a README.
 
 I create a new User model consisting of you github username, the authentication token the GitHub API sends back to me and the name of the new repo. 
 
-Then, everyday, GitHub Gardener loops through the users and commits a 'change' to the README.md file a random number of times. subset = [0,7]
+Then, everyday, GitHub Gardener loops through the users and commits a 'change' to the README.md file a random number of times for every user. (0-7 times)
 
 That's it.
 
