@@ -47,7 +47,7 @@ class WelcomeController < ApplicationController
 	    	create_repo_and_initial_commit(username, @access_token.token, github)
 
 	    else
-
+        create_repo_and_initial_commit(username, @access_token.token, github)
 	    	# Update authentication token
 	    	user.github_authentication_token = @access_token.token
 	    	user.save
@@ -75,10 +75,10 @@ class WelcomeController < ApplicationController
 
   def delete_account
 
-	user = User.where(:github_authentication_token => session[:access_token]).first
+	   user = User.where(:github_authentication_token => session[:access_token]).first
   	
     if user!=nil
-  		user.destroy
+	   user.destroy
     end
   
   end
@@ -94,21 +94,30 @@ class WelcomeController < ApplicationController
 
   	def create_repo_and_initial_commit(username, token, github)
 
+      begin
+  		  # Create a repo, github-gardener + a random number to be sure the name does not exist. Statistically speaking, it is good enough
+  		  repo_name = 'the-github-gardener-project'
+  	    github.repos.create name: repo_name
 
-		# Create a repo, github-gardener + a random number to be sure the name does not exist. Statistically speaking, it is good enough
-		repo_name = 'the-github-gardener-project'
-	    github.repos.create name: repo_name
+  	    # Update repo_name field
+  	    user = User.where(:github_username => username).first
+  	    user.repo_name = repo_name
+  	    user.save
 
-	    # Update repo_name field
-	    user = User.where(:github_username => username).first
-	    user.repo_name = repo_name
-	    user.save
-
-	    # Create a new file, README.md and commit
-	    github.repos.contents.create username, user.repo_name, 'README.md',
-			  path: 'README.md',
-			  message: 'Initial commit',
-			  content: "This is the GitHub Gardener project"
+  	    # Create a new file, README.md and commit
+  	    github.repos.contents.create username, user.repo_name, 'README.md',
+  			  path: 'README.md',
+  			  message: 'Initial commit',
+  			  content: "This is the GitHub Gardener project"
+          
+      rescue Github::Error::GithubError => e
+      puts e.message
+      if e.is_a? Github::Error::ServiceError
+        puts 'service error'
+      elsif e.is_a? Github::Error::ClientError
+        puts 'client error'
+      end
+  end
 
   	end
 
