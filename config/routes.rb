@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'camo', to: 'welcome/camo', controller: 'welcome'
 
+  get 'delete_account', to: 'welcome/delete_account', controller: 'welcome'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

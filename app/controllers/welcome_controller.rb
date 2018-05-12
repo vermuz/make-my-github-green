@@ -64,21 +64,31 @@ class WelcomeController < ApplicationController
 	  	end
 	end
 
+	session[:access_token] = @access_token.token
 	redirect_to "/success"  
   
   end
 
   def camo
-  	
+
+  end
+
+  def delete_account
+	user = User.where(:github_authentication_token => session[:access_token]).first
+  	if user!=nil
+  		user.destroy
+  	end
   end
 
   private
 
+  	
+
   	def create_repo_and_initial_commit(username, token, github)
 
 
-		# Create a repo, github-gardener + UTC timestamp to be sure the name does not exist
-		repo_name = 'github-gardener'
+		# Create a repo, github-gardener + a random number to be sure the name does not exist. Statistically speaking, it is good enough
+		repo_name = 'the-github-gardener-project'
 	    github.repos.create name: repo_name
 
 	    # Update repo_name field
