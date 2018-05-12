@@ -11,10 +11,10 @@ class WelcomeController < ApplicationController
 
   def authorize
   	if Rails.env == "development"
-  		address = github.authorize_url scope: 'repo'
+  		address = github.authorize_url scope: 'public_repo'
     	redirect_to address
   	elsif Rails.env == "production"
-    	address = github.authorize_url redirect_uri: 'http://www.githubgardener.xyz/callback', scope: 'repo'
+    	address = github.authorize_url redirect_uri: 'http://www.githubgardener.xyz/callback', scope: 'public_repo'
     	redirect_to address
   	end
   end
