@@ -1,67 +1,29 @@
-# ruby-getting-started
+# GitHub Gardener
 
-A barebones Rails app, which can easily be deployed to Heroku.
+A simple web app that commits code to your GitHub repo in order to make your contribution history green.
 
-This application supports the [Getting Started on Heroku with Ruby](https://devcenter.heroku.com/articles/getting-started-with-ruby) article - check it out.
+http://www.githubgardener.xyz
 
-## Running Locally
+## Permissions
 
-Make sure you have Ruby installed.  Also, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) (formerly known as the Heroku Toolbelt).
+For this project to work, I needed to access the 'repo' scope. That means read and write permissions.
 
-```sh
-$ git clone git@github.com:heroku/ruby-getting-started.git
-$ cd ruby-getting-started
-$ bundle install
-$ bundle exec rake db:create db:migrate
-$ heroku local
-```
+I don't abuse any of these permissions, I don't even store you email. All I do is store your GitHub username because I have to.
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+## Web flow
 
-## Deploying to Heroku
+When you sign up, GitHub Gardener creates new public repo for you with a README.md file.  
 
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku run rake db:migrate
-$ heroku open
-```
+I create a new User model consisting of you github username, the authentication token the GitHub API sends back to me and the name of the new repo. 
 
-or
+Then, everyday, GitHub Gardener loops through the users and commits a 'change' to the README.md file a random number of times. subset = [0,7]
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+That's it.
 
-## Docker
+## Delete account / Unsubscribe
 
-The app can be run and tested using the [Heroku Docker CLI plugin](https://devcenter.heroku.com/articles/local-development-with-docker-compose).
+You can also always unsubscribe. Go to githubgardener.xyz, click Sign Up with GitHub and then on the /success page click on the 'Delete my GitHub Gardener account' button.
 
-Make sure the plugin is installed:
+## Progress
 
-    heroku plugins:install heroku-docker
-
-Configure Docker and Docker Compose:
-
-    heroku docker:init
-
-And run the app locally:
-
-    docker-compose up web
-
-The app will now be available on the Docker daemon IP on port 8080.
-
-To work with the local database and do migrations, you can open a shell:
-
-    docker-compose run shell
-    bundle exec rake db:migrate
-
-You can also use Docker to release to Heroku:
-
-    heroku create
-    heroku docker:release
-    heroku open
-
-## Documentation
-
-For more information about using Ruby on Heroku, see these Dev Center articles:
-
-- [Ruby on Heroku](https://devcenter.heroku.com/categories/ruby)
+You can view the whole progress of GitHub Gardener from idea inception to Product Hunt launch on this thread. (https://twitter.com/alexsideris_/status/993523095708332032). If there is anything new, I will post it there.
