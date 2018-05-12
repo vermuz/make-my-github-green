@@ -102,7 +102,7 @@ class WelcomeController < ApplicationController
    	if Rails.env == "development"
     
     	# Get GitHub Gardener Dev
-    	@github ||= Github.new client_id: '32f0ef2d0e2b2c581ce0', client_secret: '811d9f3565fab99b2acaefb43f4ae21430c433ac'
+    	@github ||= Github.new client_id: '9d891a99f7448cdcfb4d', client_secret: '79fcf2aa70dfdc46e01d56ab048f393458dece4f'
   	
   	elsif Rails.env == "production"
     	
