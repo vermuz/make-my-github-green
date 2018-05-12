@@ -17,12 +17,14 @@ task :daily_commits => :environment do
 		puts 'in user '+user.github_username
 
 		# Create a random number of commits
-		possible_number_of_commits = [0,0,0,1,2,3,4,5,6,7]
+		possible_number_of_commits = [0,0,0,1,2,3,4,5,6]
 		random_index = rand(possible_number_of_commits.length)
 
 
 		$i = 0
 		$num = possible_number_of_commits[random_index]
+
+		puts 'For '+user.github_username+', we will make '+$num.to_s+' number of commits.'
 
 		# Make the commits
 		while $i < $num  do
@@ -43,7 +45,7 @@ def new_commit(user)
   	# Get the repo we have created, hopefully. I could just access user.repo_name but he might have deleted or changed the name
 	uri = URI('https://api.github.com/user/repos?access_token='+user.github_authentication_token)
 	response = JSON.parse(Net::HTTP.get(uri))
-	
+
 	response.each do |repo|
 		if repo['name'] == user.repo_name
 				

@@ -91,8 +91,21 @@ class WelcomeController < ApplicationController
   	end
 
    def github
+   	
    	# Instantiate 'GitHub Gardener'
-    @github ||= Github.new client_id: '32f0ef2d0e2b2c581ce0', client_secret: '811d9f3565fab99b2acaefb43f4ae21430c433ac'
+   	# For development purposes, I have two apps, 'Get GitHub Gardener' and 'Get GitHub Gardener Dev'
+   	
+   	if Rails.env == "development"
+    
+    	# Get GitHub Gardener Dev
+    	@github ||= Github.new client_id: '32f0ef2d0e2b2c581ce0', client_secret: '811d9f3565fab99b2acaefb43f4ae21430c433ac'
+  	
+  	elsif Rails.env == "production"
+    	
+    	# Get GitHub Gardener
+    	@github ||= Github.new client_id: '32f0ef2d0e2b2c581ce0', client_secret: '811d9f3565fab99b2acaefb43f4ae21430c433ac'
+  	
+  	end
    end
 
 end
