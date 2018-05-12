@@ -74,10 +74,18 @@ class WelcomeController < ApplicationController
   end
 
   def delete_account
+
 	user = User.where(:github_authentication_token => session[:access_token]).first
-  	if user!=nil
+  	
+    if user!=nil
   		user.destroy
-  	end
+    end
+  
+  end
+
+  def add_premium_email
+    email = PremiumEmail.new(:email => params[:email])
+    email.save
   end
 
   private

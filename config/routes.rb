@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'delete_account', to: 'welcome/delete_account', controller: 'welcome'
 
+  post 'add_premium_email', to: 'welcome/add_premium_email', controller: 'welcome'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
