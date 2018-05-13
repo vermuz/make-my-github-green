@@ -4,6 +4,10 @@ A web app / bot that commits code to your GitHub repo in order to make your cont
 
 http://www.githubgardener.xyz
 
+Show some love on Product Hunt! <3
+
+https://www.producthunt.com/posts/github-gardener
+
 ## Permissions
 
 For this project to work, I needed to access the 'repo' scope of the GitHub API permissions. That means read and write permissions for public repositories.
