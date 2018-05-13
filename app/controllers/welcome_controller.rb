@@ -96,7 +96,7 @@ class WelcomeController < ApplicationController
 
       begin
   		  # Create a repo, github-gardener + a random number to be sure the name does not exist. Statistically speaking, it is good enough
-  		  repo_name = 'the-github-gardener-project'
+  		  repo_name = 'github-gardener'
   	    github.repos.create name: repo_name
 
   	    # Update repo_name field
@@ -109,7 +109,7 @@ class WelcomeController < ApplicationController
   			  path: 'README.md',
   			  message: 'Initial commit',
   			  content: "This is the GitHub Gardener project"
-          
+
       rescue Github::Error::GithubError => e
       puts e.message
       if e.is_a? Github::Error::ServiceError
