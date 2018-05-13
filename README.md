@@ -8,6 +8,10 @@ Show some love on Product Hunt! <3
 
 https://www.producthunt.com/posts/github-gardener
 
+See the whole story from idea conception to launch on a single twitter thread!
+
+https://twitter.com/alexsideris_/status/993523095708332032
+
 ## Permissions
 
 For this project to work, I needed to access the 'repo' scope of the GitHub API permissions. That means read and write permissions for public repositories.
