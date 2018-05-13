@@ -28,12 +28,12 @@ class WelcomeController < ApplicationController
 	    @access_token = github.get_token authorization_code
 	    @access_token.token
 		
-		# Get GitHub username
-		uri = URI('https://api.github.com/user?access_token='+@access_token.token)
-		response = JSON.parse(Net::HTTP.get(uri))
-		username = response['login']
+		  # Get GitHub username
+		  uri = URI('https://api.github.com/user?access_token='+@access_token.token)
+		  response = JSON.parse(Net::HTTP.get(uri))
+		  username = response['login']
 
-		github = Github.new oauth_token: @access_token.token
+		  github = Github.new oauth_token: @access_token.token
 
 	    # Create the new User if he isn't doesn't already exist, else update the authentication token
 	    user = User.where(:github_username => username).first
