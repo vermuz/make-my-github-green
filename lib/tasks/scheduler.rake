@@ -26,21 +26,21 @@ task :daily_commits => :environment do
 
 		puts 'For '+user.github_username+', we will make '+$num.to_s+' number of commits.'
 
+		# Get the GitHub instance
+		github = Github.new oauth_token: user.github_authentication_token
+
 		# Make the commits
 		while $i < $num  do
-		   new_commit(user)
+		   new_commit(user, github)
 		   $i +=1
 		end
 
 	end
 end
 
-def new_commit(user)
+def new_commit(user, github)
 
 	puts 'in new commit'
-
-	# Get the GitHub instance
-	github = Github.new oauth_token: user.github_authentication_token
 
   	# Get the repo we have created, hopefully. I could just access user.repo_name but he might have deleted or changed the name
 	uri = URI('https://api.github.com/user/repos?access_token='+user.github_authentication_token)
